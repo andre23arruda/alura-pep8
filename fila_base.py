@@ -1,3 +1,6 @@
+from constantes import TAMANHO_MAXIMO, TAMANHO_MINIMO
+
+
 class FilaBase:
     codigo: int = 0
     fila = []
@@ -5,8 +8,8 @@ class FilaBase:
     senha_atual: str = ''
 
     def reseta_fila(self) -> None:
-        if self.codigo >= 100:
-            self.codigo = 0
+        if self.codigo >= TAMANHO_MAXIMO:
+            self.codigo = TAMANHO_MINIMO
         else:
             self.codigo += 1
 
