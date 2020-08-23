@@ -1,10 +1,12 @@
+from typing import List, Dict, Union
+
 from constantes import TAMANHO_MAXIMO, TAMANHO_MINIMO
 
 
 class FilaBase:
     codigo: int = 0
-    fila = []
-    clientes_atendidos = []
+    fila: List[str] = []
+    clientes_atendidos:List[str] = []
     senha_atual: str = ''
 
     def reseta_fila(self) -> None:
@@ -24,8 +26,9 @@ class FilaBase:
         return f'Cliente atual: {cliente_atual}, dirija-se ao caixa {caixa}'
 
     def estatistica(self, dia: str, agencia: int, flag: str) -> dict:
+        info_estatistica: Dict[str, Union[str, List[str], int]]
         if flag != 'detail':
-            info_estatistica = {f'{agencia}-{dia}': len(self.clientes_atendidos)}
+            info_estatistica[f'{agencia}-{dia}'] = len(self.clientes_atendidos)
         else:
             info_estatistica = {
                 'dia': dia,
